@@ -1257,7 +1257,55 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                     "Item Description: Pellentesque porta, mauris quis interdum vehicula, urna sapien ultrices velit, nec venenatis dui odio in augue. Cras posuere, enim a cursus convallis, neque turpis malesuada erat, ut adipiscing neque tortor ac erat.",
                     itemContent,
                     group1));
+
             this.AllGroups.Add(group1);
+
+            // Usability Test group.
+            var group2 = new SampleDataCollection(
+                    "Group-2",
+                    "Group Title: Usability Test",
+                    "Group Subtitle: Christopher's project",
+                    SampleDataSource.mediumGrayImage,
+                    "Group Description: Christopher Project tabs");
+
+            // My first item.
+            group2.Items.Add(new SampleDataItem(
+                "Group-2-Item-1",
+                "Item Title: 1",
+                "Item Subtitle: 1",
+                SampleDataSource.darkGrayImage,
+                "Item description: My first item",
+                itemContent,
+                group2
+                ));
+
+            // Item leading to my page.
+            group2.Items.Add(new SampleDataItem(
+                "Group-2-Item-2",
+                "My first page",
+                string.Empty,
+                SampleDataSource.darkGrayImage,
+                "Experimental tab",
+                itemContent,
+                group2,
+                typeof(MyUC)
+                ));
+
+            /* // TEMPLATE
+            group1.Items.Add(
+                    new SampleDataItem(
+                        "Group-1-Item-1",
+                        "Buttons",
+                        string.Empty,
+                        SampleDataSource.darkGrayImage,
+                        "Several types of buttons with custom styles",
+                        itemContent,
+                        group1,
+                        typeof(ButtonSample)));
+            */
+
+            // Add group 2 to the group collection.
+            this.allGroups.Add(group2);
         }
 
         public ObservableCollection<SampleDataCollection> AllGroups

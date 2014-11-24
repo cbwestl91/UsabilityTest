@@ -34,7 +34,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             this.kinectRegion.KinectSensor = KinectSensor.GetDefault();
 
             //// Add in display content
-            var sampleDataSource = SampleDataSource.GetGroup("Group-1");
+            var sampleDataSource = SampleDataSource.GetGroup("Group-2");
             this.itemsControl.ItemsSource = sampleDataSource;
         }
 

@@ -82,6 +82,9 @@
     <Compile Include="Pages\KinectPointerPointSample.xaml.cs">
       <DependentUpon>KinectPointerPointSample.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MyUC.xaml.cs">
+      <DependentUpon>MyUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ScrollViewerSample.xaml.cs">
       <DependentUpon>ScrollViewerSample.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,10 @@
     <Page Include="Pages\KinectPointerPointSample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\MyUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ScrollViewerSample.xaml">
       <Generator>MSBuild:Compile</Generator>
