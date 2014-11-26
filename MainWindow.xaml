@@ -45,7 +45,7 @@
                         <ItemsControl Grid.Row="0" Name="itemsControl" ItemTemplate="{StaticResource Kinect250x250ItemTemplate}" Button.Click="ButtonClick">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <WrapPanel VerticalAlignment="Center" Orientation="Vertical" Margin="75,0,75,0" />
+                                    <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="75,0,75,0" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
                         </ItemsControl>

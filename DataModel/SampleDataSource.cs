@@ -1291,6 +1291,28 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                 typeof(MyUC)
                 ));
 
+            group2.Items.Add(
+                    new SampleDataItem(
+                        "Group-2-Item-3",
+                        "Zoomable Photo",
+                        string.Empty,
+                        SampleDataSource.lightGrayImage,
+                        "ScrollViewer control hosting a photo, enabling scrolling and zooming.",
+                        itemContent,
+                        group1,
+                        typeof(ScrollViewerSample)));
+
+            group2.Items.Add(
+                    new SampleDataItem(
+                        "Group-2-Item-4",
+                        "Engagement and Cursor Settings",
+                        "",
+                        SampleDataSource.darkGrayImage,
+                        "Enables user to switch between engagement models and cursor visuals.",
+                        itemContent,
+                        group1,
+                        typeof(EngagementSettings)));
+
             /* // TEMPLATE
             group1.Items.Add(
                     new SampleDataItem(

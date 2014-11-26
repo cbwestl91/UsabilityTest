@@ -36,6 +36,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             //// Add in display content
             var sampleDataSource = SampleDataSource.GetGroup("Group-2");
             this.itemsControl.ItemsSource = sampleDataSource;
+            
         }
 
         /// <summary>

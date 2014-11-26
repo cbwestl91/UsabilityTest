@@ -19,6 +19,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         public ScrollViewerSample()
         {
             this.InitializeComponent();
+            
         }
     }
 }
