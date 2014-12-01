@@ -21,6 +21,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
                 <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <StackPanel HorizontalAlignment="Center" Margin="0,0,0,100">
                 <TextBlock Style="{StaticResource HeaderStyle}">Engageable People</TextBlock>
@@ -32,7 +33,19 @@
                              GroupName="People"
                              Style="{StaticResource RadioButtonStyle}" />
             </StackPanel>
+
             <StackPanel Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,100">
+                <TextBlock Style="{StaticResource HeaderStyle}">Image Viewer Mode</TextBlock>
+                <RadioButton Name="mouseMode" Content="Mouse Mode" 
+                             Style="{StaticResource RadioButtonStyle}" 
+                             GroupName="ImageMode"
+                             IsChecked="True"/>
+                <RadioButton Name="kinMode" Content="Kinect Mode" 
+                             GroupName="ImageMode"
+                             Style="{StaticResource RadioButtonStyle}" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="2" HorizontalAlignment="Center" Margin="0,0,0,100">
                 <TextBlock Style="{StaticResource HeaderStyle}">Engagement Style</TextBlock>
                 <RadioButton Name="system" Content="System (hand open/still)" 
                              Style="{StaticResource RadioButtonStyle}" 
@@ -45,7 +58,7 @@
                              GroupName="EngagementStyle"
                              Style="{StaticResource RadioButtonStyle}" />
             </StackPanel>
-            <StackPanel Grid.Column="2" HorizontalAlignment="Center" Margin="0,0,0,100">
+            <StackPanel Grid.Column="3" HorizontalAlignment="Center" Margin="0,0,0,100">
                 <TextBlock Style="{StaticResource HeaderStyle}">Cursor Sprite Sheet</TextBlock>
                 <RadioButton Name="cursorSpriteSheetDefault" Content="Default" 
                              Style="{StaticResource RadioButtonStyle}" 

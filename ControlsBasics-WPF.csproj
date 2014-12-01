@@ -82,8 +82,11 @@
     <Compile Include="Pages\KinectPointerPointSample.xaml.cs">
       <DependentUpon>KinectPointerPointSample.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MyUC.xaml.cs">
-      <DependentUpon>MyUC.xaml</DependentUpon>
+    <Compile Include="Pages\My2DZoom.xaml.cs">
+      <DependentUpon>My2DZoom.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyPaint.xaml.cs">
+      <DependentUpon>MyPaint.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ScrollViewerSample.xaml.cs">
       <DependentUpon>ScrollViewerSample.xaml</DependentUpon>
@@ -134,7 +137,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\MyUC.xaml">
+    <Page Include="Pages\My2DZoom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MyPaint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -199,6 +206,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\CursorSpriteSheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CountrySideHiddenMeaning.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CountrySideHiddenMeaningKinect.jpg" />
+    <Resource Include="Images\LakeHiddenMeaning.jpg" />
+    <Resource Include="Images\LakeHiddenMeaningKinect.jpg" />
+    <Resource Include="Images\SnowyRoadHiddenMeaning.jpg" />
+    <Resource Include="Images\SnowyRoadHiddenMeaningKinect.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

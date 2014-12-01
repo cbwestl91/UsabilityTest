@@ -88,6 +88,15 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             int people = onePerson.IsChecked.HasValue && onePerson.IsChecked.Value ? 1 : 2;
             App app = ((App)App.Current);
 
+            if (kinMode.IsChecked == true)
+            {
+                KinectModeEngaged.KinectMode = true;
+            }
+            else if (mouseMode.IsChecked == true)
+            {
+                KinectModeEngaged.KinectMode = false;
+            }
+
             if (system.IsChecked.HasValue && system.IsChecked.Value)
             {
                 switch (people)

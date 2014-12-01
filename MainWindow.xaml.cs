@@ -39,6 +39,8 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             
         }
 
+        
+
         /// <summary>
         /// Handle a button click from the wrap panel.
         /// </summary>
@@ -82,6 +84,23 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         {
             backButton.Visibility = System.Windows.Visibility.Hidden;
             navigationRegion.Content = this.kinectRegionGrid;
+        }
+    }
+
+    public static class KinectModeEngaged
+    {
+        static bool kinectMode;
+        public static bool KinectMode
+        {
+            get 
+            {
+                return kinectMode;
+            }
+
+            set 
+            {
+                kinectMode = value;
+            }
         }
     }
 }

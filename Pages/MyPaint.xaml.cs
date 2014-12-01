@@ -18,27 +18,33 @@ using Microsoft.Kinect.Input;
 namespace Microsoft.Samples.Kinect.ControlsBasics
 {
     /// <summary>
-    /// Interaction logic for MyUC.xaml
+    /// Interaction logic for MyPaint.xaml
     /// </summary>
-    public partial class MyUC : UserControl
+    public partial class MyPaint : UserControl
     {
-        private const double DotHeight = 60;
-        private const double DotWidth = 60;
+        private const double DotHeight = 25;
+        private const double DotWidth = 25;
         private SolidColorBrush blackBrush = Brushes.Black;
         private SolidColorBrush greenBrush = Brushes.Green;
         private SolidColorBrush yellowBrush = Brushes.Yellow;
 
         // Kinect variables.
+        bool shouldDraw_Lefthand = false;
+        bool shouldDraw_Righthand = false;
+
+        PointF lastPoint;
+
         BodyFrameReader bodyReader;
         Body[] bodies;
 
         private TimeSpan lastTime;
 
-        public MyUC()
+        public MyPaint()
         {
             this.InitializeComponent();
 
             this.Loaded += InkCanvas_Loaded;
+            this.Unloaded -= InkCanvas_Unloaded;
         }
 
         void InkCanvas_Loaded(object sender, RoutedEventArgs e)
@@ -46,13 +52,18 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             // Listen to Kinect pointer events
             KinectCoreWindow kinectCoreWindow = KinectCoreWindow.GetForCurrentThread();
             kinectCoreWindow.PointerMoved += kinectCoreWindow_PointerMoved;
-
+            
             var sensor = KinectSensor.GetDefault();
             bodyReader = sensor.BodyFrameSource.OpenReader();
 
             this.bodyReader.FrameArrived += this.BodyReader_FrameArrived;
             this.bodies = new Body[this.bodyReader.BodyFrameSource.BodyCount];
+            
+        }
 
+        void InkCanvas_Unloaded(object sender, RoutedEventArgs e)
+        {
+            this.bodyReader.FrameArrived -= this.BodyReader_FrameArrived;
         }
 
         private void BodyReader_FrameArrived(object sender, BodyFrameArrivedEventArgs args)
@@ -68,12 +79,13 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                 }
             }
         }
-        bool shouldDraw = false;
+        
         private void ShouldDraw(Body[] bodies)
         {
             if (bodies == null)
             {
-                shouldDraw = false;
+                shouldDraw_Lefthand = false;
+                shouldDraw_Righthand = false;
             }
             else
             {
@@ -83,27 +95,33 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                     {
                         continue;
                     }
-                    Console.WriteLine("Current hand state: " + body.HandRightState + " / " + HandState.Open);
+                    
                     if (body.HandLeftState == HandState.Closed)
                     {
-                        shouldDraw = true;
+                        shouldDraw_Lefthand = true;
+                        shouldDraw_Righthand = false;
                         return;
                     }
                     else if (body.HandRightState == HandState.Closed)
                     {
-                        shouldDraw = true;
+                        shouldDraw_Righthand = true;
+                        shouldDraw_Lefthand = false;
                         return;
+
+                        
                     }
                     else
                     {
-                        shouldDraw = false;
+                        shouldDraw_Lefthand = false;
+                        shouldDraw_Righthand = false;
                     }
                 }
             }
             
 
             // If no bodies are tracked.
-            shouldDraw = false;
+            shouldDraw_Lefthand = false;
+            shouldDraw_Righthand = false;
         }
 
         private void kinectCoreWindow_PointerMoved(object sender, KinectPointerEventArgs args)
@@ -114,14 +132,27 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                 lastTime = kinectPointerPoint.Properties.BodyTimeCounter;
                 
             }
-
-            RenderPointer(kinectPointerPoint.Properties.IsEngaged,
+            
+            if (kinectPointerPoint.Properties.HandType == HandType.LEFT && shouldDraw_Lefthand == true)
+            {
+                RenderPointer(kinectPointerPoint.Properties.IsEngaged,
                 kinectPointerPoint.Position,
                 kinectPointerPoint.Properties.UnclampedPosition,
                 kinectPointerPoint.Properties.HandReachExtent,
                 kinectPointerPoint.Properties.BodyTimeCounter,
                 kinectPointerPoint.Properties.BodyTrackingId,
                 kinectPointerPoint.Properties.HandType);
+            }
+            else if (kinectPointerPoint.Properties.HandType == HandType.RIGHT && shouldDraw_Righthand == true)
+            {
+                RenderPointer(kinectPointerPoint.Properties.IsEngaged,
+                kinectPointerPoint.Position,
+                kinectPointerPoint.Properties.UnclampedPosition,
+                kinectPointerPoint.Properties.HandReachExtent,
+                kinectPointerPoint.Properties.BodyTimeCounter,
+                kinectPointerPoint.Properties.BodyTrackingId,
+                kinectPointerPoint.Properties.HandType);
+            }
         }
 
         private void RenderPointer(
@@ -141,8 +172,8 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             }
 
             cursor.Children.Clear();
-            var ellipseColor = isEngaged ? greenBrush : yellowBrush;
-
+            var ellipseColor = blackBrush;
+            /*
             StackPanel sp = new StackPanel()
             {
                 Margin = new Thickness(-5, -5, 0, 0),
@@ -156,29 +187,50 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
                 Margin = new Thickness(5),
                 Fill = ellipseColor
             });
+            */
 
-            if (shouldDraw)
-            {
-                cursor.Children.Add(sp);
-            }
+
+            Line line = new Line();
+
+            line.StrokeDashCap = PenLineCap.Round;
+            line.StrokeStartLineCap = PenLineCap.Round;
+            line.StrokeEndLineCap = PenLineCap.Round; 
+
+            line.Stroke = new SolidColorBrush(myCanvas.DefaultDrawingAttributes.Color);
+            line.StrokeThickness = 25;
+
+            line.X1 = lastPoint.X;
+            line.Y1 = lastPoint.Y;
+            line.X2 = position.X;
+            line.Y2 = position.Y;
+
+            lastPoint = position;
+
             
 
+            cursor.Children.Add(line);
+            
             InkCanvas.SetLeft(cursor, position.X * myCanvas.ActualWidth - DotWidth / 2);
             InkCanvas.SetTop(cursor, position.Y * myCanvas.ActualHeight - DotHeight / 2);
 
-/*            Ellipse unclampedCursor = new Ellipse()
-            {
-                HorizontalAlignment = HorizontalAlignment.Left,
-                Height = 60,
-                Width = 60,
-                StrokeThickness = 5,
-                Stroke = blackBrush
-            };
-
-            myCanvas.Children.Add(unclampedCursor);
-            InkCanvas.SetLeft(unclampedCursor, unclampedPosition.X * myCanvas.ActualWidth - DotWidth / 2);
-            InkCanvas.SetTop(unclampedCursor, unclampedPosition.Y * myCanvas.ActualHeight - DotHeight / 2);*/
+            //myCanvas.Children.Add(line);
         }
 
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            myCanvas.Strokes.Clear();
+            myCanvas.Children.Clear();
+        }
+
+        private void BrushButton_Click(object sender, RoutedEventArgs e)
+        {
+            myCanvas.DefaultDrawingAttributes.Color = Colors.Black;
+        }
+
+        private void EraserButton_Click(object sender, RoutedEventArgs e)
+        {
+            myCanvas.DefaultDrawingAttributes.Color = Colors.White;
+            
+        }
     }
 }

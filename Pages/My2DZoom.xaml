@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Microsoft.Samples.Kinect.ControlsBasics.My2DZoom"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:k="http://schemas.microsoft.com/kinect/2014"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Page title 
+        <TextBlock x:Name="pageTitle" Grid.Column="1" Text="Zoom Tool" 
+                   Margin="10 0 10 0" /> -->
+
+        <StackPanel Grid.Column="0" Orientation="Vertical">
+            <Button Name="Standard" Click="Standard_Click" Content="Standard" Style="{StaticResource StackedButtonStyle}" Foreground="#FF743E08"/>
+            <Button Name="Countryside" Click="Countryside_Click" Content="Countryside" Style="{StaticResource StackedButtonStyle}" Foreground="#FF743E08"/>
+            <Button Name="Lake" Click="Lake_Click" Content="Lake" Style="{StaticResource StackedButtonStyle}" Foreground="#FF743E08"/>
+            <Button Name="Road" Click="Road_Click" Content="Snowy Road" Style="{StaticResource StackedButtonStyle}" Foreground="#FF743E08"/>
+
+        </StackPanel>
+
+        <ScrollViewer Name="MyScrollViewer" Grid.Column="1" 
+                      HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+                      k:KinectRegion.IsHorizontalRailEnabled="True" k:KinectRegion.IsVerticalRailEnabled="True"
+                      k:KinectRegion.ZoomMode="Enabled"  >
+            <Image Name="MyImage" Stretch="None" Source="{Binding ImageSource}" MouseWheel="MyImage_MouseWheel" />
+        </ScrollViewer>
+    </Grid>
+</UserControl>
