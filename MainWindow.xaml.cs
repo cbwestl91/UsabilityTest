@@ -1,10 +1,4 @@
-﻿//------------------------------------------------------------------------------
-// <copyright file="MainWindow.xaml.cs" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.  All rights reserved.
-// </copyright>
-//------------------------------------------------------------------------------
-
-namespace Microsoft.Samples.Kinect.ControlsBasics
+﻿namespace Microsoft.Samples.Kinect.ControlsBasics
 {
     using System;
     using System.Windows;
@@ -34,7 +28,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             this.kinectRegion.KinectSensor = KinectSensor.GetDefault();
 
             //// Add in display content
-            var sampleDataSource = SampleDataSource.GetGroup("Group-2");
+            var sampleDataSource = DataSource.GetGroup("Group-2");
             this.itemsControl.ItemsSource = sampleDataSource;
             
         }

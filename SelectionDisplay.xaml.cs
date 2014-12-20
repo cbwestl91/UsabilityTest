@@ -1,10 +1,4 @@
-﻿//------------------------------------------------------------------------------
-// <copyright file="SelectionDisplay.xaml.cs" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.  All rights reserved.
-// </copyright>
-//------------------------------------------------------------------------------
-
-namespace Microsoft.Samples.Kinect.ControlsBasics
+﻿namespace Microsoft.Samples.Kinect.ControlsBasics
 {
     using System.Globalization;
     using System.Windows.Controls;

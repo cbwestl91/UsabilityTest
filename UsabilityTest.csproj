@@ -64,35 +64,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\BindableBase.cs" />
-    <Compile Include="DataModel\SampleDataSource.cs" />
+    <Compile Include="DataModel\DataSource.cs" />
     <Compile Include="HandPointers\HandInScreenEngagementModel.cs" />
-    <Compile Include="Pages\ButtonSample.xaml.cs">
-      <DependentUpon>ButtonSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\CheckBoxRadioButtonSample.xaml.cs">
-      <DependentUpon>CheckBoxRadioButtonSample.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\EngagementSettings.xaml.cs">
       <DependentUpon>EngagementSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="HandPointers\HandOverHeadEngagementModel.cs" />
-    <Compile Include="Pages\ItemsControlsSample.xaml.cs">
-      <DependentUpon>ItemsControlsSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\KinectPointerPointSample.xaml.cs">
-      <DependentUpon>KinectPointerPointSample.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\My2DZoom.xaml.cs">
       <DependentUpon>My2DZoom.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MyPaint.xaml.cs">
       <DependentUpon>MyPaint.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ScrollViewerSample.xaml.cs">
-      <DependentUpon>ScrollViewerSample.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\SliderSample.xaml.cs">
-      <DependentUpon>SliderSample.xaml</DependentUpon>
     </Compile>
     <Compile Include="SelectionDisplay.xaml.cs">
       <DependentUpon>SelectionDisplay.xaml</DependentUpon>
@@ -117,23 +99,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\ButtonSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\CheckBoxRadioButtonSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\EngagementSettings.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\ItemsControlsSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\KinectPointerPointSample.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -144,14 +110,6 @@
     <Page Include="Pages\MyPaint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\ScrollViewerSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\SliderSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="SelectionDisplay.xaml">
       <SubType>Designer</SubType>
@@ -195,11 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\beach.jpg" />
-    <Resource Include="Images\clouds.jpg" />
-    <Resource Include="Images\fireworks.jpg" />
-    <Resource Include="Images\hamlet.jpg" />
-    <Resource Include="Images\operahouse.jpg" />
-    <Resource Include="Images\sydney.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\CursorSpriteSheetPurple.png" />

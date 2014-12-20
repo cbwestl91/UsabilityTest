@@ -1,10 +1,4 @@
-﻿//------------------------------------------------------------------------------
-// <copyright file="BindableBase.cs" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.  All rights reserved.
-// </copyright>
-//------------------------------------------------------------------------------
-
-namespace Microsoft.Samples.Kinect.ControlsBasics.Common
+﻿namespace Microsoft.Samples.Kinect.ControlsBasics.Common
 {
     using System;
     using System.ComponentModel;

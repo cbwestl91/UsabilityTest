@@ -1,10 +1,4 @@
-﻿//------------------------------------------------------------------------------
-// <copyright file="SampleDataSource.cs" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.  All rights reserved.
-// </copyright>
-//------------------------------------------------------------------------------
-
-namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
+﻿namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
 {
     using System;
     using System.Collections;
@@ -18,21 +12,15 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
     using Microsoft.Samples.Kinect.ControlsBasics.Common;
     using System.Globalization;
 
-    // The data model defined by this file serves as a representative example of a strongly-typed
-    // model that supports notification when members are added, removed, or modified.  The property
-    // names chosen coincide with data bindings in the standard item templates.
-    // Applications may use this model as a starting point and build on it, or discard it entirely and
-    // replace it with something appropriate to their needs.
-
     /// <summary>
     /// Creates a collection of groups and items with hard-coded content.
     /// SampleDataSource initializes with placeholder data rather than live production
     /// data so that sample data is provided at both design-time and run-time.
     /// </summary>
     [SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "File is from Windows Store template")]
-    public sealed class SampleDataSource
+    public sealed class DataSource
     {
-        private static SampleDataSource sampleDataSource = new SampleDataSource();
+        private static DataSource sampleDataSource = new DataSource();
 
         private ObservableCollection<SampleDataCollection> allGroups = new ObservableCollection<SampleDataCollection>();
 
@@ -40,7 +28,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
         private static Uri mediumGrayImage = new Uri("assets/mediumGray.png", UriKind.Relative);
         private static Uri lightGrayImage = new Uri("assets/lightGray.png", UriKind.Relative);
 
-        public SampleDataSource()
+        public DataSource()
         {
             string itemContent = string.Format(
                                     CultureInfo.CurrentCulture,
@@ -54,7 +42,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                     "Group-2",
                     "Group Title: Usability Test",
                     "Group Subtitle: Christopher's project",
-                    SampleDataSource.mediumGrayImage,
+                    DataSource.mediumGrayImage,
                     "Group Description: Christopher Project tabs");
 
             // Item leading to Kinect Paint.
@@ -62,45 +50,34 @@ namespace Microsoft.Samples.Kinect.ControlsBasics.DataModel
                 "Group-2-Item-2",
                 "2D Paint",
                 string.Empty,
-                SampleDataSource.darkGrayImage,
+                DataSource.darkGrayImage,
                 "Experimental tab",
                 itemContent,
                 group2,
                 typeof(MyPaint)
                 ));
 
+            // Item leading to Kinect Zooming Tool.
             group2.Items.Add(new SampleDataItem(
                 "Group-2-Item-3",
                 "2D Zooming Tool",
                 string.Empty,
-                SampleDataSource.lightGrayImage,
+                DataSource.lightGrayImage,
                 "ScrollViewer control hosting a photo, enabling scrolling and zooming.",
                 itemContent,
                 group2,
                 typeof(My2DZoom)));
 
+            // Item leading to Options.
             group2.Items.Add(new SampleDataItem(
                 "Group-2-Item-4",
                 "Engagement and Cursor Settings",
                 "",
-                SampleDataSource.darkGrayImage,
+                DataSource.darkGrayImage,
                 "Enables user to switch between engagement models and cursor visuals.",
                 itemContent,
                 group2,
                 typeof(EngagementSettings)));
-
-            /* // TEMPLATE
-            group1.Items.Add(
-                    new SampleDataItem(
-                        "Group-1-Item-1",
-                        "Buttons",
-                        string.Empty,
-                        SampleDataSource.darkGrayImage,
-                        "Several types of buttons with custom styles",
-                        itemContent,
-                        group1,
-                        typeof(ButtonSample)));
-            */
 
             // Add group 2 to the group collection.
             this.allGroups.Add(group2);
